@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Shower - El Rey León</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Fira+Code:wght@300..700&family=Story+Script&display=swap" rel="stylesheet">
+    <style>
+        /* --- VARIABLES DE COLORES --- */
+        :root {
+            --simba-gold: #ffc107;
+            --sunset-orange: #d35400;
+            --earth-brown: #5d4037;
+            --jungle-green: #388e3c;
+            --cream: #fff3e0;
+            --overlay-dark: rgba(40, 20, 0, 0.6);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--cream);
+            color: var(--earth-brown);
+            overflow-x: hidden;
+            padding-bottom: 60px; /* Espacio para el botón flotante en móvil */
+        }
+
+        h1, h2, h3 { font-family: 'Story Script', cursive; text-transform: uppercase; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .video-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; z-index: -1;
+        }
+
+        .overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, var(--overlay-dark), rgba(211, 84, 0, 0.3));
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative; z-index: 1; padding: 20px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .intro-text { font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 10px; color: var(--simba-gold); }
+        
+        .baby-name {
+            font-size: 4rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+            margin: 10px 0; line-height: 1.1; color: #fff;
+        }
+
+        .circle-icon {
+            width: 80px; height: 80px; background: var(--simba-gold);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin: 20px auto; font-size: 2rem; box-shadow: 0 0 15px var(--sunset-orange);
+        }
+
+        
+/* --- REEMPLAZA ESTE BLOQUE EN TU CSS --- */
+
+.countdown-container {
+    /* 1. HACER ESPACIO PARA LA FOTO */
+    min-height: 70vh; /* Ocupa el 70% de la altura de la pantalla del celular/PC */
+    
+    /* 2. POSICIONAR CONTENIDO ABAJO */
+    display: flex;
+    flex-direction: column;     /* Elementos uno encima de otro */
+    justify-content: flex-end;  /* Empuja todo hacia el final (abajo) */
+    align-items: center;        /* Centra todo horizontalmente */
+
+    /* 3. FONDO CON EFECTO DEGRADADO */
+    /* El truco: rgba(0,0,0,0) es transparente. La oscuridad empieza abajo */
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(93, 64, 55, 0.95) 90%), 
+                url('fondo1.png');
+
+    background-size: cover;     /* Asegura que la foto cubra todo sin deformarse */
+    background-position: center; 
+    
+    /* Estilos de texto y bordes */
+    color: var(--simba-gold);
+    padding-bottom: 60px; /* Un poco de espacio al final para que no pegue con el borde */
+    border-top: 5px solid var(--sunset-orange);
+    position: relative;
+    z-index: 10;
+    
+    /* Sombra para separar de la siguiente sección */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+        .timer { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+        
+        .time-box {
+            background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px;
+            min-width: 80px; border: 1px solid var(--simba-gold);
+        }
+        .time-box span { display: block; font-size: 2rem; font-weight: bold; font-family: 'Cinzel Decorative', cursive; }
+        .time-box small { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- DETALLES --- */
+        .details-section { padding: 50px 20px; max-width: 1000px; margin: 0 auto; text-align: center; }
+        .cards-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 40px; }
+        
+        .info-card {
+            background: white; flex: 1 1 300px; padding: 30px; border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-bottom: 5px solid var(--jungle-green);
+        }
+        .card-icon { font-size: 2.5rem; margin-bottom: 15px; color: var(--sunset-orange); }
+
+        /* --- CONFIRMACION --- */
+        .rsvp-section {
+            background: linear-gradient(135deg, var(--sunset-orange), var(--simba-gold));
+            padding: 60px 20px; text-align: center; color: white;
+        }
+        .btn-whatsapp {
+            display: inline-block; background-color: #25D366; color: white;
+            padding: 15px 40px; font-size: 1.2rem; border-radius: 50px;
+            text-decoration: none; margin-top: 20px; font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 2px solid white;
+        }
+
+        /* --- ESTILOS DEL BOTÓN DE MÚSICA (NUEVO) --- */
+    /* --- BUSCA ESTO EN TU CSS Y REEMPLÁZALO --- */
+
+.music-btn {
+    position: fixed;
+    bottom: 30px;       /* Lo subimos un poco más (antes 20px) */
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: var(--simba-gold);
+    border: 4px solid var(--earth-brown);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    
+    /* CAMBIO CLAVE: Aumentamos el z-index al máximo */
+    z-index: 9999 !important; 
+    
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    font-size: 1.8rem;
+    transition: transform 0.3s ease;
+    
+    /* Animación de latido */
+    animation: pulse 2s infinite;
+    
+    /* Evita que al tocarlo en celular se seleccione azul */
+    -webkit-tap-highlight-color: transparent; 
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+}
+
+/* AJUSTE ESPECÍFICO PARA CELULARES */
+@media (max-width: 768px) {
+    .music-btn {
+        bottom: 80px; /* Lo subimos bastante más en celular para evitar barras de navegación */
+        right: 15px;  
+        width: 50px;  /* Un poco más pequeño para que no estorbe */
+        height: 50px;
+        font-size: 1.4rem;
+    }
+}
+
+        .music-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Animación para llamar la atención al botón */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 193, 7, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) { .baby-name { font-size: 2.5rem; } }
+
+        /* --- PEGAR ESTO DENTRO DE <style> --- */
+
+/* 1. Estado inicial: invisible y bajada 50 pixeles */
+.animate-box {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out; /* La magia de la suavidad */
+}
+
+/* 2. Estado final: visible y en su lugar original */
+.animate-box.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 3. Opcional: Retardo para que aparezcan en escalera (una tras otra) */
+.cards-container .info-card:nth-child(2) { transition-delay: 0.2s; }
+.cards-container .info-card:nth-child(3) { transition-delay: 0.4s; }
+
+/* --- ANIMACIONES SCROLL --- */
+
+/* 1. Estado inicial (Invisible y abajo) */
+.animate-box {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out; /* Velocidad de la animación */
+}
+
+/* 2. Estado final (Visible y en su sitio) */
+.animate-box.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 3. Retraso para que aparezcan en escalera (efecto dominó) */
+.cards-container .info-card:nth-child(2) { transition-delay: 0.2s; }
+.cards-container .info-card:nth-child(3) { transition-delay: 0.4s; }
+    </style>
+
+    <title>Baby Shower - El Rey León</title>
+
+    <meta property="og:title" content="¡Baby Shower de Eithan Eliam Xicum Espadas.! 🦁">
+    <meta property="og:description" content="Acompáñanos a celebrar esta nueva aventura. Toca aquí para ver los detalles, fecha y lugar.">
+    <meta property="og:image" content="https://tusitio.com/imagen-preview.jpg">
+    <meta property="og:url" content="https://tusitio.com">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+</head>
+<body>
+
+    <audio id="bg-audio" loop>
+        <source src="musica.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="music-btn" id="toggle-music" title="Pausar/Reproducir Música">
+        🎵
+    </div>
+
+    <header class="hero">
+        <video class="video-bg" autoplay muted loop playsinline poster="https://via.placeholder.com/1920x1080/d35400/fff?text=Cargando+Video">
+            <source src="fondo.mp4" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <p class="intro-text">El ciclo sin fin nos guía al</p>
+            <h1>Baby Shower de</h1>
+            <div class="circle-icon">🦁</div>
+            <h2 class="baby-name" contenteditable="true"> Eithan Eliam Xicum Espadas.</h2>
+            <h2 class="intro-text">Mi mami y papi te invitan para que celebres junto a ellos mi pronta llegada... ¡Nos conoceremos pronto!</h2>
+        </div>
+
+        
+    </header>
+
+    <section class="countdown-container">
+        <h2>La aventura comienza en:</h2>
+        <div class="timer" id="timer">
+            <div class="time-box"><span id="days">00</span><small>Días</small></div>
+            <div class="time-box"><span id="hours">00</span><small>Hrs</small></div>
+            <div class="time-box"><span id="minutes">00</span><small>Min</small></div>
+            <div class="time-box"><span id="seconds">00</span><small>Seg</small></div>
+        </div>
+    </section>
+
+    <section class="details-section">
+        <h2 style="color: var(--sunset-orange); margin-bottom: 20px;">Detalles del Reino</h2>
+        <div class="cards-container">
+            <div class="info-card animate-box">
+                <div class="card-icon">📅</div>
+                <h3>¿Cuándo?</h3>
+                <p>Sábado, 24 de Enero a las 18:00 hrs</p>
+            </div>
+            <div class="info-card animate-box">
+                <div class="card-icon">📍</div>
+                <h3>¿Dónde?</h3>
+                <p>Mi domicilio</p>
+                <a href="https://maps.app.goo.gl/FZV854j1tu8vD4mu8" style="color: var(--sunset-orange);">Ver Mapa</a>
+            </div>
+            <div class="info-card animate-box">
+                <div class="card-icon">🎁</div>
+                <h3>Regalos</h3>
+                <p>Nuestro mayor regalo es su presencia. Pero si desea obsequiar algo, todo con amor será bienvenido.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="animate-box">
+            <section class="rsvp-section">
+        <h2>¡Hakuna Matata!</h2>
+        <p>No te preocupes, confirmar es fácil.</p>
+        <a href="#" class="btn-whatsapp" id="whatsapp-btn" target="_blank">Confirmar Asistencia 🦁</a>
+    </section>
+
+    </div>
+    
+
+    <footer style="background: #333; color: #888; text-align: center; padding: 20px;">
+        <p>© 2026 PartyClick</p>
+    </footer>
+
+    <script>
+        // --- 1. CONFIGURACIÓN ---
+        const fechaEvento = new Date("jan 24, 2026 18:00:00").getTime();
+        const telefonoWhatsapp = "5219992146013"; 
+        const nombreBebe = "Eithan Eliam Xicum Espadas.";
+
+        // --- 2. CONTROL DE MÚSICA (NUEVO CÓDIGO) ---
+        const audio = document.getElementById("bg-audio");
+        const musicBtn = document.getElementById("toggle-music");
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                musicBtn.innerHTML = "🔇"; // Ícono de silencio
+                musicBtn.style.animation = "none"; // Detener animación
+            } else {
+                audio.play();
+                musicBtn.innerHTML = "🎵"; // Ícono de música
+                musicBtn.style.animation = "pulse 2s infinite"; // Reanudar animación
+            }
+            isPlaying = !isPlaying;
+        }
+
+        musicBtn.addEventListener("click", toggleMusic);
+
+        // Intento de Auto-play (Truco para navegadores)
+        window.addEventListener('load', function() {
+            // Intentar reproducir automáticamente
+            var promise = audio.play();
+            if (promise !== undefined) {
+                promise.then(_ => {
+                    // Autoplay exitoso
+                    isPlaying = true;
+                    musicBtn.innerHTML = "🎵";
+                }).catch(error => {
+                    // Autoplay bloqueado por el navegador.
+                    // Esperamos al primer clic del usuario en cualquier parte para iniciar.
+                    musicBtn.innerHTML = "🔇";
+                    document.body.addEventListener('click', function() {
+                        if(!isPlaying){
+                            audio.play();
+                            isPlaying = true;
+                            musicBtn.innerHTML = "🎵";
+                            musicBtn.style.animation = "pulse 2s infinite";
+                        }
+                    }, { once: true }); // Se ejecuta solo una vez
+                });
+            }
+        });
+
+        // --- 3. CUENTA REGRESIVA ---
+        const timerInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = fechaEvento - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+            if (distance < 0) { clearInterval(timerInterval); document.getElementById("timer").innerHTML = "<h3>¡Llegó el día!</h3>"; }
+        }, 1000);
+
+        // --- 4. WHATSAPP ---
+        const btnWhatsapp = document.getElementById('whatsapp-btn');
+        const mensaje = `¡Hola! Quiero confirmar mi asistencia al Baby Shower de ${nombreBebe}.`;
+        btnWhatsapp.href = `https://wa.me/${telefonoWhatsapp}?text=${encodeURIComponent(mensaje)}`;
+
+        // --- PEGAR ESTO DENTRO DE <script> AL FINAL ---
+
+// 1. Configurar el "Observador"
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        // Si el elemento es visible en la pantalla...
+        if (entry.isIntersecting) {
+            // ...le agregamos la clase 'visible' para que CSS lo anime
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.2 // La animación inicia cuando se ve el 20% de la caja
+});
+
+// 2. Decirle al observador qué elementos vigilar
+document.querySelectorAll('.animate-box').forEach(box => {
+    observer.observe(box);
+});
+
+
+// Buscar todos los elementos con la clase 'animate-box' y vigilarlos
+document.querySelectorAll('.animate-box').forEach(box => {
+    observer.observe(box);
+});
+    </script>
+</body>
+</html>
